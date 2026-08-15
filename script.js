@@ -19,37 +19,40 @@ async function generatePalette() {
     }
     
     try {
-        const response = await fetch("https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3", {
+        const response = await fetch("https://api-inference.huggingface.co/models/google/gemma-2b-it", {
             method: "POST",
             headers: {
                 "Authorization": "Bearer " + HF_API_KEY,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                inputs: `Ты — профессиональный дизайнер. Пользователь описал настроение: "${userInput}". 
-Создай палитру из 5 цветов (HEX-коды), которые идеально передают это настроение.
-Верни ТОЛЬКО JSON массив в формате: ["#FF5733", "#C70039", "#C70039", "#581845", "#DAF7A6"] без лишнего текста.`,
+                inputs: `Верни только JSON массив из 5 HEX цветов для темы "${userInput}". Формат: ["#FF5733", "#C70039"]`,
                 parameters: {
-                    max_new_tokens: 100,
-                    temperature: 0.7
+                    max_new_tokens: 80,
+                    temperature: 0.6,
+                    return_full_text: false
                 }
             })
         });
         
+        if (!response.ok) {
+            const errText = await response.text();
+            throw new Error("HTTP " + response.status + ": " + errText.substring(0, 100));
+        }
+        
         const data = await response.json();
+        console.log("Ответ от ИИ:", JSON.stringify(data));
         
         let text = "";
         if (Array.isArray(data)) {
             text = data[0].generated_text || "";
-        } else if (data.generated_text) {
-            text = data.generated_text;
         } else {
-            throw new Error("Неожиданный формат ответа");
+            text = data.generated_text || "";
         }
         
         const match = text.match(/\[.*\]/s);
         if (!match) {
-            throw new Error("ИИ не вернул палитру");
+            throw new Error("Не нашёл JSON в ответе: " + text);
         }
         
         const colors = JSON.parse(match[0]);
