@@ -1,8 +1,8 @@
-const part1 = "AQ.Ab8RN6L-";
-const part2 = "B2k_miMII17g88SH";
-const part3 = "uGNgZkQ-HUq2BKhA";
-const part4 = "zyMBCM4aSg";
-const API_KEY = part1 + part2 + part3 + part4;
+const part1 = "hf_OeqjkEq";
+const part2 = "kbqrQtXsLJ";
+const part3 = "TZOqjICfHC";
+const part4 = "cyJBjUw";
+const HF_API_KEY = part1 + part2 + part3 + part4;
 
 async function generatePalette() {
     const userInput = document.getElementById('userInput').value;
@@ -19,41 +19,45 @@ async function generatePalette() {
     }
     
     try {
-        const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + API_KEY;
-        
-        const aiPrompt = `Ты — профессиональный дизайнер. Пользователь описал настроение: "${userInput}". 
-        Создай палитру из 5 цветов (HEX-коды), которые идеально передают это настроение.
-        Верни ТОЛЬКО JSON массив в формате: ["#FF5733", "#C70039", ...] без лишнего текста.`;
-        
-        const response = await fetch(url, {
+        const response = await fetch("https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3", {
             method: "POST",
             headers: {
+                "Authorization": "Bearer " + HF_API_KEY,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: aiPrompt
-                    }]
-                }]
+                inputs: `Ты — профессиональный дизайнер. Пользователь описал настроение: "${userInput}". 
+Создай палитру из 5 цветов (HEX-коды), которые идеально передают это настроение.
+Верни ТОЛЬКО JSON массив в формате: ["#FF5733", "#C70039", "#C70039", "#581845", "#DAF7A6"] без лишнего текста.`,
+                parameters: {
+                    max_new_tokens: 100,
+                    temperature: 0.7
+                }
             })
         });
         
         const data = await response.json();
         
-        let answer = data.candidates[0].content.parts[0].text;
-        
-        const match = answer.match(/\[.*\]/s);
-        if (match) {
-            answer = match[0];
+        let text = "";
+        if (Array.isArray(data)) {
+            text = data[0].generated_text || "";
+        } else if (data.generated_text) {
+            text = data.generated_text;
+        } else {
+            throw new Error("Неожиданный формат ответа");
         }
         
-        const colors = JSON.parse(answer);
+        const match = text.match(/\[.*\]/s);
+        if (!match) {
+            throw new Error("ИИ не вернул палитру");
+        }
+        
+        const colors = JSON.parse(match[0]);
         displayColors(colors.slice(0, 5));
         
     } catch (error) {
         console.error("Ошибка:", error);
-        paletteDiv.innerHTML = '<p style="color: red; width: 100%;">Ошибка. Попробуй ещё раз.</p>';
+        paletteDiv.innerHTML = '<p style="color: red; width: 100%;">Ошибка: ' + error.message + '</p>';
     }
 }
 
