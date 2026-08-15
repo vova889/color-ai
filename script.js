@@ -1,76 +1,179 @@
+// Расширенный словарь палитр
 const moodPalettes = {
+    // Природа
     "ночь": ["#0B1026", "#1B2A4A", "#2C3E50", "#34495E", "#5D6D7E"],
     "космос": ["#0F0C29", "#302B63", "#24243E", "#1A1A40", "#4B0082"],
-    "клубника": ["#E74C3C", "#C0392B", "#F1948A", "#F5B7B1", "#922B21"],
     "лес": ["#1E5128", "#4E9F3D", "#7DCEA0", "#A9DFBF", "#145A32"],
-    "солнце": ["#F1C40F", "#F39C12", "#E67E22", "#F7DC6F", "#FAD7A0"],
     "океан": ["#154360", "#1A5276", "#2980B9", "#5DADE2", "#85C1E9"],
-    "закат": ["#F39C12", "#E74C3C", "#8E44AD", "#D35400", "#F5B041"],
+    "море": ["#154360", "#1A5276", "#2980B9", "#5DADE2", "#85C1E9"],
+    "пустыня": ["#D4AC0D", "#B7950B", "#9A7D0A", "#7D6608", "#F7DC6F"],
+    "горы": ["#2C3E50", "#34495E", "#5D6D7E", "#85929E", "#AEB6BF"],
+    "север": ["#0F4C81", "#1B6CA8", "#2980B9", "#5DADE2", "#D4E6F1"],
+    "туман": ["#BDC3C7", "#AEB6BF", "#99A3A4", "#7F8C8D", "#CCD1D1"],
+    "дождь": ["#5D6D7E", "#85929E", "#AEB6BF", "#BDC3C7", "#CCD1D1"],
+    "снег": ["#E5E7E9", "#CCD1D1", "#99A3A4", "#7F8C8D", "#BDC3C7"],
+    "вулкан": ["#E74C3C", "#C0392B", "#922B21", "#F39C12", "#D35400"],
+    "водопад": ["#154360", "#1A5276", "#2980B9", "#5DADE2", "#85C1E9"],
+    "остров": ["#F1C40F", "#F7DC6F", "#2ECC71", "#2980B9", "#85C1E9"],
+    "тайга": ["#1E5128", "#145A32", "#0B5345", "#4E9F3D", "#7DCEA0"],
+    "болото": ["#145A32", "#1E5128", "#4E9F3D", "#7DCEA0", "#A9DFBF"],
+    "каньон": ["#AF601A", "#D35400", "#E67E22", "#F5B041", "#F7DC6F"],
+    "саванна": ["#D4AC0D", "#B7950B", "#9A7D0A", "#F7DC6F", "#FAD7A0"],
+    "арктика": ["#FFFFFF", "#E5E7E9", "#CCD1D1", "#99A3A4", "#D4E6F1"],
+    
+    // Времена года
     "осень": ["#6E2C00", "#AF601A", "#D35400", "#E67E22", "#F5B041"],
     "весна": ["#A9DFBF", "#7DCEA0", "#52BE80", "#2ECC71", "#D5F5E3"],
     "зима": ["#E5E7E9", "#CCD1D1", "#99A3A4", "#7F8C8D", "#BDC3C7"],
+    "лето": ["#F1C40F", "#F7DC6F", "#FAD7A0", "#FDEBD0", "#E67E22"],
+    
+    // Еда
+    "клубника": ["#E74C3C", "#C0392B", "#F1948A", "#F5B7B1", "#922B21"],
+    "ваниль": ["#FDEBD0", "#FAD7A0", "#F7DC6F", "#F5B041", "#E67E22"],
+    "мята": ["#D5F5E3", "#A9DFBF", "#7DCEA0", "#52BE80", "#27AE60"],
+    "кофе": ["#6E2C00", "#AF601A", "#D35400", "#E67E22", "#F5B041"],
+    "шоколад": ["#3E2723", "#4E342E", "#5D4037", "#6D4C41", "#8D6E63"],
+    "апельсин": ["#E67E22", "#F39C12", "#F5B041", "#F7DC6F", "#FAD7A0"],
+    "вишня": ["#922B21", "#C0392B", "#E74C3C", "#F1948A", "#F5B7B1"],
+    "банан": ["#F1C40F", "#F7DC6F", "#FAD7A0", "#FDEBD0", "#E67E22"],
+    "арбуз": ["#2ECC71", "#27AE60", "#E74C3C", "#C0392B", "#F1948A"],
+    "черника": ["#1B2631", "#2C3E50", "#5D6D7E", "#8E44AD", "#A569BD"],
+    "персик": ["#FDEBD0", "#FAD7A0", "#F5B041", "#F39C12", "#E67E22"],
+    "лайм": ["#27AE60", "#2ECC71", "#52BE80", "#7DCEA0", "#D5F5E3"],
+    
+    // Эмоции
     "любовь": ["#E74C3C", "#EC7063", "#F1948A", "#FADBD8", "#C0392B"],
     "грусть": ["#2C3E50", "#34495E", "#5D6D7E", "#85929E", "#AEB6BF"],
     "радость": ["#F1C40F", "#F7DC6F", "#FAD7A0", "#FDEBD0", "#E67E22"],
     "спокойствие": ["#D5F5E3", "#A9DFBF", "#7DCEA0", "#52BE80", "#2ECC71"],
+    "страх": ["#1B1B1B", "#2C2C2C", "#3D3D3D", "#4E4E4E", "#5F5F5F"],
+    "злость": ["#8B0000", "#B22222", "#DC143C", "#FF0000", "#FF4500"],
+    "нежность": ["#FDEBD0", "#FAD7A0", "#F7DC6F", "#F5B041", "#E67E22"],
+    "тоска": ["#2C3E50", "#34495E", "#5D6D7E", "#85929E", "#AEB6BF"],
+    "восторг": ["#F1C40F", "#F7DC6F", "#FAD7A0", "#FDEBD0", "#E67E22"],
+    
+    // Стили
     "киберпанк": ["#00FFF5", "#FF00FF", "#8A2BE2", "#FF4500", "#00FF00"],
-    "пустыня": ["#D4AC0D", "#B7950B", "#9A7D0A", "#7D6608", "#F7DC6F"],
-    "север": ["#0F4C81", "#1B6CA8", "#2980B9", "#5DADE2", "#D4E6F1"],
+    "минимализм": ["#FFFFFF", "#F5F5F5", "#E0E0E0", "#CCCCCC", "#999999"],
+    "ретро": ["#8B4513", "#CD853F", "#DEB887", "#F5DEB3", "#D2691E"],
+    "неон": ["#FF00FF", "#00FFFF", "#FF4500", "#00FF00", "#FFFF00"],
+    "готика": ["#0B0B0B", "#1B1B1B", "#2B2B2B", "#3B3B3B", "#8B0000"],
+    "барокко": ["#8E44AD", "#A569BD", "#BB8FCE", "#D2B4DE", "#E8DAEF"],
+    "модерн": ["#E67E22", "#F39C12", "#F5B041", "#F7DC6F", "#FAD7A0"],
+    
+    // Разное
     "огонь": ["#E74C3C", "#C0392B", "#922B21", "#F39C12", "#D35400"],
-    "туман": ["#BDC3C7", "#AEB6BF", "#99A3A4", "#7F8C8D", "#CCD1D1"],
-    "ваниль": ["#FDEBD0", "#FAD7A0", "#F7DC6F", "#F5B041", "#E67E22"],
-    "мята": ["#D5F5E3", "#A9DFBF", "#7DCEA0", "#52BE80", "#27AE60"],
-    "лаванда": ["#8E44AD", "#A569BD", "#BB8FCE", "#D2B4DE", "#E8DAEF"]
+    "вода": ["#154360", "#1A5276", "#2980B9", "#5DADE2", "#85C1E9"],
+    "воздух": ["#D4E6F1", "#85C1E9", "#5DADE2", "#2980B9", "#1B6CA8"],
+    "земля": ["#4E342E", "#5D4037", "#6D4C41", "#8D6E63", "#A1887F"],
+    "золото": ["#FFD700", "#F4A460", "#DAA520", "#B8860B", "#FFC125"],
+    "серебро": ["#C0C0C0", "#D3D3D3", "#E8E8E8", "#A9A9A9", "#808080"],
+    "радуга": ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF"],
+    "закат": ["#F39C12", "#E74C3C", "#8E44AD", "#D35400", "#F5B041"],
+    "рассвет": ["#FAD7A0", "#F5B041", "#F39C12", "#E67E22", "#FDEBD0"],
+    "лаванда": ["#8E44AD", "#A569BD", "#BB8FCE", "#D2B4DE", "#E8DAEF"],
+    "камень": ["#7F8C8D", "#99A3A4", "#BDC3C7", "#AEB6BF", "#CCD1D1"],
+    "металл": ["#7F8C8D", "#99A3A4", "#BDC3C7", "#AEB6BF", "#CCD1D1"],
+    "дерево": ["#4E342E", "#5D4037", "#6D4C41", "#8D6E63", "#A1887F"],
+    "стекло": ["#D4E6F1", "#85C1E9", "#5DADE2", "#2980B9", "#1B6CA8"]
 };
 
+// Функция смешивания палитр
+function mixPalettes(palettes) {
+    const mixed = [];
+    const count = palettes.length;
+    
+    for (let i = 0; i < 5; i++) {
+        const paletteIndex = i % count;
+        const colorIndex = i % palettes[paletteIndex].length;
+        mixed.push(palettes[paletteIndex][colorIndex]);
+    }
+    
+    return mixed;
+}
+
+// Генерация случайной палитры по хэшу
+function generateHashPalette(text) {
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+        hash = text.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    
+    const colors = [];
+    let currentHash = Math.abs(hash);
+    
+    for (let i = 0; i < 5; i++) {
+        const hue = (currentHash >> (i * 4)) % 360;
+        const saturation = 50 + (currentHash >> (i * 3)) % 40;
+        const lightness = 40 + (currentHash >> (i * 2)) % 25;
+        
+        const color = hslToHex(hue, saturation, lightness);
+        colors.push(color);
+        currentHash = Math.floor(currentHash / 7) + (currentHash % 13) * 100;
+    }
+    
+    return colors;
+}
+
+// Поиск всех совпадений в тексте
+function findMatches(text) {
+    const matches = [];
+    
+    for (const [mood, colors] of Object.entries(moodPalettes)) {
+        if (text.includes(mood)) {
+            matches.push({ mood, colors });
+        }
+    }
+    
+    return matches;
+}
+
+// Основная функция
 function generatePalette() {
     const userInput = document.getElementById('userInput').value.trim().toLowerCase();
     const paletteDiv = document.getElementById('palette');
+    const themeDiv = document.getElementById('theme');
     
     paletteDiv.innerHTML = '<p style="color: #999; width: 100%;">✨ Подбираю палитру...</p>';
     
     setTimeout(() => {
+        let colors = null;
+        let theme = "";
+        
         if (userInput === '') {
-            const colors = Array.from({length: 5}, () => {
+            colors = Array.from({length: 5}, () => {
                 return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
             });
-            displayColors(colors);
-            return;
-        }
-        
-        let foundColors = null;
-        
-        for (const [mood, colors] of Object.entries(moodPalettes)) {
-            if (userInput.includes(mood)) {
-                foundColors = colors;
-                break;
+            theme = "Случайная палитра";
+        } else {
+            const matches = findMatches(userInput);
+            
+            if (matches.length === 1) {
+                colors = matches[0].colors;
+                theme = matches[0].mood;
+            } else if (matches.length > 1) {
+                colors = mixPalettes(matches.map(m => m.colors));
+                theme = matches.map(m => m.mood).join(" + ");
+            } else {
+                colors = generateHashPalette(userInput);
+                theme = `Уникальная палитра для "${userInput}"`;
             }
         }
         
-        if (!foundColors) {
-            let hash = 0;
-            for (let i = 0; i < userInput.length; i++) {
-                hash = userInput.charCodeAt(i) + ((hash << 5) - hash);
-            }
-            
-            const colors = [];
-            let currentHash = Math.abs(hash);
-            
-            for (let i = 0; i < 5; i++) {
-                const hue = (currentHash >> (i * 4)) % 360;
-                const saturation = 50 + (currentHash >> (i * 3)) % 40;
-                const lightness = 40 + (currentHash >> (i * 2)) % 25;
-                
-                const color = hslToHex(hue, saturation, lightness);
-                colors.push(color);
-                currentHash = Math.floor(currentHash / 7) + (currentHash % 13) * 100;
-            }
-            
-            foundColors = colors;
+        if (themeDiv) {
+            themeDiv.textContent = "Тема: " + theme;
         }
         
-        displayColors(foundColors);
+        displayColors(colors);
     }, 500);
+}
+
+// Случайное настроение
+function randomMood() {
+    const moods = Object.keys(moodPalettes);
+    const randomMood = moods[Math.floor(Math.random() * moods.length)];
+    document.getElementById('userInput').value = randomMood;
+    generatePalette();
 }
 
 function hslToHex(h, s, l) {
