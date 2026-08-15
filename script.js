@@ -1,10 +1,52 @@
-function generatePalette() {
+// Функция генерации палитры с помощью ИИ
+async function generatePalette() {
     const userInput = document.getElementById('userInput').value;
     const paletteDiv = document.getElementById('palette');
     
-    paletteDiv.innerHTML = '';
+    // Показываем загрузку
+    paletteDiv.innerHTML = '<p style="color: #999; width: 100%;">✨ Генерирую палитру...</p>';
     
-    const colors = generateColorsFromText(userInput);
+    // Если пусто — просто случайные цвета
+    if (!userInput || userInput.trim() === '') {
+        const colors = Array.from({length: 5}, () => {
+            return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+        });
+        displayColors(colors);
+        return;
+    }
+    
+    try {
+        const colors = await askAIForPalette(userInput);
+        displayColors(colors);
+    } catch (error) {
+        console.error("Ошибка:", error);
+        paletteDiv.innerHTML = '<p style="color: red; width: 100%;">Ошибка. Попробуй ещё раз.</p>';
+    }
+}
+
+// Запрос к Google Gemini через Netlify
+async function askAIForPalette(text) {
+    // Вызываем нашу серверless функцию
+    const response = await fetch('/.netlify/functions/generate-palette', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: text })
+    });
+    
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    
+    const data = await response.json();
+    return data.colors;
+}
+
+// Отображение цветов на странице
+function displayColors(colors) {
+    const paletteDiv = document.getElementById('palette');
+    paletteDiv.innerHTML = '';
     
     colors.forEach((color, index) => {
         const colorBox = document.createElement('div');
@@ -23,58 +65,14 @@ function generatePalette() {
     });
 }
 
-function generateColorsFromText(text) {
-    if (!text || text.trim() === '') {
-        return Array.from({length: 5}, () => {
-            return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
-        });
-    }
-    
-    let hash = 0;
-    for (let i = 0; i < text.length; i++) {
-        hash = text.charCodeAt(i) + ((hash << 5) - hash);
-        hash = hash & hash;
-    }
-    
-    const colors = [];
-    let currentHash = Math.abs(hash);
-    
-    for (let i = 0; i < 5; i++) {
-        const hue = (currentHash >> (i * 4)) % 360;
-        const saturation = 60 + (currentHash >> (i * 3)) % 30;
-        const lightness = 45 + (currentHash >> (i * 2)) % 20;
-        
-        const color = hslToHex(hue, saturation, lightness);
-        colors.push(color);
-        
-        currentHash = Math.floor(currentHash / 7) + (currentHash % 13) * 100;
-    }
-    
-    return colors;
-}
-
-function hslToHex(h, s, l) {
-    s /= 100;
-    l /= 100;
-    
-    const k = n => (n + h / 30) % 12;
-    const a = s * Math.min(l, 1 - l);
-    const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-    
-    const toHex = x => {
-        const hex = Math.round(255 * x).toString(16);
-        return hex.length === 1 ? '0' + hex : hex;
-    };
-    
-    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`.toUpperCase();
-}
-
+// Копирование в буфер обмена
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         showToast(`Цвет ${text} скопирован!`);
     });
 }
 
+// Всплывающее уведомление
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
@@ -86,6 +84,7 @@ function showToast(message) {
     }, 2000);
 }
 
+// Запуск при загрузке страницы
 window.onload = function() {
     generatePalette();
     
