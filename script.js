@@ -81,161 +81,27 @@ const moodPalettes = {
 // Функция смешивания палитр
 function mixPalettes(palettes) {
     const mixed = [];
-    const count = palettes.length;
     
+    if (palettes.length === 1) {
+        return palettes[0];
+    }
+    
+    if (palettes.length === 2) {
+        // Берём 3 цвета из первой палитры, 2 из второй
+        mixed.push(palettes[0][0]);
+        mixed.push(palettes[1][1]);
+        mixed.push(palettes[0][2]);
+        mixed.push(palettes[1][3]);
+        mixed.push(palettes[0][4]);
+        return mixed;
+    }
+    
+    // Для трёх и больше
     for (let i = 0; i < 5; i++) {
-        const paletteIndex = i % count;
-        const colorIndex = i % palettes[paletteIndex].length;
-        mixed.push(palettes[paletteIndex][colorIndex]);
+        const paletteIndex = i % palettes.length;
+        const colorIndex = Math.floor(i / palettes.length);
+        mixed.push(palettes[paletteIndex][colorIndex % palettes[paletteIndex].length]);
     }
     
     return mixed;
 }
-
-// Генерация случайной палитры по хэшу
-function generateHashPalette(text) {
-    let hash = 0;
-    for (let i = 0; i < text.length; i++) {
-        hash = text.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    
-    const colors = [];
-    let currentHash = Math.abs(hash);
-    
-    for (let i = 0; i < 5; i++) {
-        const hue = (currentHash >> (i * 4)) % 360;
-        const saturation = 50 + (currentHash >> (i * 3)) % 40;
-        const lightness = 40 + (currentHash >> (i * 2)) % 25;
-        
-        const color = hslToHex(hue, saturation, lightness);
-        colors.push(color);
-        currentHash = Math.floor(currentHash / 7) + (currentHash % 13) * 100;
-    }
-    
-    return colors;
-}
-
-// Поиск всех совпадений в тексте
-function findMatches(text) {
-    const matches = [];
-    
-    for (const [mood, colors] of Object.entries(moodPalettes)) {
-        if (text.includes(mood)) {
-            matches.push({ mood, colors });
-        }
-    }
-    
-    return matches;
-}
-
-// Основная функция
-function generatePalette() {
-    const userInput = document.getElementById('userInput').value.trim().toLowerCase();
-    const paletteDiv = document.getElementById('palette');
-    const themeDiv = document.getElementById('theme');
-    
-    paletteDiv.innerHTML = '<p style="color: #999; width: 100%;">✨ Подбираю палитру...</p>';
-    
-    setTimeout(() => {
-        let colors = null;
-        let theme = "";
-        
-        if (userInput === '') {
-            colors = Array.from({length: 5}, () => {
-                return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
-            });
-            theme = "Случайная палитра";
-        } else {
-            const matches = findMatches(userInput);
-            
-            if (matches.length === 1) {
-                colors = matches[0].colors;
-                theme = matches[0].mood;
-            } else if (matches.length > 1) {
-                colors = mixPalettes(matches.map(m => m.colors));
-                theme = matches.map(m => m.mood).join(" + ");
-            } else {
-                colors = generateHashPalette(userInput);
-                theme = `Уникальная палитра для "${userInput}"`;
-            }
-        }
-        
-        if (themeDiv) {
-            themeDiv.textContent = "Тема: " + theme;
-        }
-        
-        displayColors(colors);
-    }, 500);
-}
-
-// Случайное настроение
-function randomMood() {
-    const moods = Object.keys(moodPalettes);
-    const randomMood = moods[Math.floor(Math.random() * moods.length)];
-    document.getElementById('userInput').value = randomMood;
-    generatePalette();
-}
-
-function hslToHex(h, s, l) {
-    s /= 100;
-    l /= 100;
-    
-    const k = n => (n + h / 30) % 12;
-    const a = s * Math.min(l, 1 - l);
-    const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-    
-    const toHex = x => {
-        const hex = Math.round(255 * x).toString(16);
-        return hex.length === 1 ? '0' + hex : hex;
-    };
-    
-    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`.toUpperCase();
-}
-
-function displayColors(colors) {
-    const paletteDiv = document.getElementById('palette');
-    paletteDiv.innerHTML = '';
-    
-    colors.forEach((color, index) => {
-        const colorBox = document.createElement('div');
-        colorBox.className = 'color-box';
-        colorBox.style.backgroundColor = color;
-        colorBox.style.animationDelay = `${index * 0.1}s`;
-        
-        const colorCode = document.createElement('span');
-        colorCode.className = 'color-code';
-        colorCode.textContent = color;
-        
-        colorBox.appendChild(colorCode);
-        colorBox.onclick = () => copyToClipboard(color);
-        
-        paletteDiv.appendChild(colorBox);
-    });
-}
-
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        showToast(`Цвет ${text} скопирован!`);
-    });
-}
-
-function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.remove();
-    }, 2000);
-}
-
-window.onload = function() {
-    generatePalette();
-    
-    document.getElementById('userInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            generatePalette();
-        }
-    });
-};
