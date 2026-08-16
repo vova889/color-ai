@@ -22,7 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     padding: 80px 20px;
     position: relative;
     overflow: hidden;
@@ -60,24 +60,33 @@ body {
     box-shadow: 0 0 100px 50px rgba(255, 180, 50, 0.4);
 }
 
-/* Боковые островки */
-.side-card {
+/* Все карточки — стеклянные и выпуклые */
+.side-card,
+.container,
+.feature-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    width: 200px;
-    position: relative;
-    z-index: 2;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
     transition: all 0.3s;
 }
 
-.side-card:hover {
+.side-card:hover,
+.container:hover,
+.feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    border-color: rgba(255,255,255,0.2);
+}
+
+/* Боковые островки */
+.side-card {
+    padding: 25px;
+    width: 200px;
 }
 
 .stat-item {
@@ -141,18 +150,10 @@ body {
 
 /* Центральный блок */
 .container {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
     padding: 40px;
     max-width: 500px;
     width: 100%;
     text-align: center;
-    position: relative;
-    z-index: 2;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
 }
 
 h1 {
@@ -274,19 +275,9 @@ button:active {
 }
 
 .feature-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
     padding: 30px;
     width: 220px;
     text-align: center;
-    transition: all 0.3s;
-}
-
-.feature-card:hover {
-    background: rgba(255,255,255,0.06);
-    transform: translateY(-5px);
-    border-color: rgba(255,255,255,0.2);
 }
 
 .feature-icon {
