@@ -6,74 +6,82 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #1a1a1a;
+    background: #0f0f1a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
-    position: relative;
 }
 
-/* Верхний фон с красивым градиентом (закат) */
+/* Верхняя секция */
 .hero {
     width: 100%;
-    min-height: 60vh;
-    background: linear-gradient(180deg, #2c1a4d 0%, #6b3fa0 15%, #c75b7a 35%, #ff8c42 55%, #ffc861 70%, #a8c0ff 85%, #3f2b96 100%);
+    min-height: 70vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 20%, #0f3460 40%, #533483 60%, #e94560 80%, #ff8c42 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     position: relative;
+    overflow: hidden;
 }
 
-/* Добавляем солнце в правом верхнем углу */
+/* Звёзды */
 .hero::before {
     content: '';
     position: absolute;
-    top: 40px;
-    right: 60px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fff9c4 20%, #ffe082 50%, #ffb300 70%, transparent 100%);
-    box-shadow: 0 0 60px 30px rgba(255, 200, 50, 0.6);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 50px 160px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.2), transparent);
+    background-size: 200px 200px;
 }
 
-/* Добавляем облака */
+/* Солнце */
 .hero::after {
     content: '';
     position: absolute;
-    bottom: 100px;
-    left: 80px;
-    width: 180px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    filter: blur(15px);
+    bottom: -50px;
+    right: -30px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff9c4 20%, #ffe082 45%, #ffb300 65%, rgba(255,140,66,0.4) 80%, transparent 100%);
+    box-shadow: 0 0 100px 50px rgba(255, 180, 50, 0.4);
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
     padding: 40px;
     max-width: 600px;
     width: 100%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     text-align: center;
     position: relative;
     z-index: 2;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
 }
 
 h1 {
-    color: #333;
+    color: white;
     margin-bottom: 10px;
     font-size: 2rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .subtitle {
-    color: #666;
+    color: rgba(255,255,255,0.7);
     margin-bottom: 30px;
     font-size: 1.1rem;
 }
@@ -86,33 +94,42 @@ h1 {
 
 input {
     flex: 1;
-    padding: 12px 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
+    padding: 14px 18px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
     font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transition: all 0.3s;
+}
+
+input::placeholder {
+    color: rgba(255,255,255,0.5);
 }
 
 input:focus {
     border-color: #667eea;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 20px rgba(102,126,234,0.3);
 }
 
 button {
-    padding: 12px 24px;
-    background: #667eea;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 1rem;
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
+    transition: all 0.3s;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 button:hover {
-    background: #5a67d8;
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102,126,234,0.4);
 }
 
 button:active {
@@ -121,110 +138,115 @@ button:active {
 
 .palette {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
     min-height: 100px;
 }
 
 .color-box {
-    width: 100px;
-    height: 100px;
-    border-radius: 12px;
+    width: 90px;
+    height: 90px;
+    border-radius: 16px;
     cursor: pointer;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding: 8px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s;
     animation: fadeIn 0.5s ease;
+    border: 2px solid rgba(255,255,255,0.2);
 }
 
 .color-box:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: white;
 }
 
 .color-code {
-    background: rgba(255,255,255,0.9);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
     font-weight: bold;
-    color: #333;
+    letter-spacing: 0.5px;
 }
 
 .hint {
     margin-top: 20px;
-    color: #999;
-    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
 }
 
-/* Нижняя секция - галерея с CSS-градиентами */
+/* Нижняя секция */
 .gallery {
     width: 100%;
-    background: #f5f5f5;
-    padding: 60px 20px;
+    background: #0f0f1a;
+    padding: 80px 20px;
     text-align: center;
 }
 
 .gallery h2 {
-    color: #333;
-    font-size: 2rem;
-    margin-bottom: 15px;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .gallery p {
-    color: #666;
+    color: rgba(255,255,255,0.6);
     font-size: 1.1rem;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .gallery-item {
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s;
     aspect-ratio: 4/3;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-color: rgba(255,255,255,0.3);
 }
 
-/* Фоны для каждой карточки галереи */
+/* Фоны для галереи */
 .gallery-item:nth-child(1) {
-    background: linear-gradient(180deg, #ff6b6b, #ffa07a, #ffd89b);
+    background: linear-gradient(135deg, #ff6b6b, #ffa07a, #ffd89b);
 }
 
 .gallery-item:nth-child(2) {
-    background: linear-gradient(180deg, #1E5128, #4E9F3D, #7DCEA0);
+    background: linear-gradient(135deg, #1E5128, #4E9F3D, #7DCEA0);
 }
 
 .gallery-item:nth-child(3) {
-    background: linear-gradient(180deg, #154360, #1A5276, #2980B9);
+    background: linear-gradient(135deg, #154360, #1A5276, #2980B9);
 }
 
 .gallery-item:nth-child(4) {
-    background: linear-gradient(180deg, #2C3E50, #34495E, #5D6D7E);
+    background: linear-gradient(135deg, #2C3E50, #34495E, #5D6D7E);
 }
 
 .gallery-item:nth-child(5) {
-    background: linear-gradient(180deg, #D4AC0D, #B7950B, #9A7D0A);
+    background: linear-gradient(135deg, #D4AC0D, #B7950B, #F7DC6F);
 }
 
 .gallery-item:nth-child(6) {
-    background: linear-gradient(180deg, #0F0C29, #302B63, #24243E);
+    background: linear-gradient(135deg, #0F0C29, #302B63, #4B0082);
 }
 
 .gallery-item .overlay {
@@ -232,12 +254,13 @@ button:active {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20px;
+    padding: 25px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
     color: white;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: left;
+    letter-spacing: 0.5px;
 }
 
 @keyframes fadeIn {
@@ -253,20 +276,21 @@ button:active {
 
 .toast {
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    background: #333;
+    background: rgba(0,0,0,0.8);
     color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 12px 24px;
+    border-radius: 12px;
     opacity: 0;
     animation: slideUp 0.3s ease forwards;
+    backdrop-filter: blur(10px);
 }
 
 @keyframes slideUp {
     to {
         opacity: 1;
-        bottom: 40px;
+        bottom: 50px;
     }
 }
