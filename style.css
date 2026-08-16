@@ -180,10 +180,9 @@ button:active {
     font-size: 0.85rem;
 }
 
-/* Нижняя секция */
 .gallery {
     width: 100%;
-    background: #0f0f1a;
+    background: linear-gradient(180deg, #ff8c42 0%, #e94560 20%, #533483 50%, #0f3460 100%);
     padding: 80px 20px;
     text-align: center;
 }
