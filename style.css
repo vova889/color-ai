@@ -6,7 +6,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600') center/cover no-repeat fixed;
+    background-color: #f39c12;
     min-height: 100vh;
     display: flex;
     justify-content: center;
