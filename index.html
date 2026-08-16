@@ -7,21 +7,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎨 Нейро-Генератор Палитр</h1>
-        <p class="subtitle">Опиши настроение — получи цветовую палитру</p>
-        
-        <div class="input-group">
-            <input type="text" id="userInput" placeholder="Например: закат на море, осенний лес, космос...">
-            <button id="generateBtn">Сгенерировать</button>
+
+    <!-- Верхняя секция с генератором -->
+    <div class="hero">
+        <div class="container">
+            <h1>🎨 Нейро-Генератор Палитр</h1>
+            <p class="subtitle">Опиши настроение — получи цветовую палитру</p>
+            
+            <div class="input-group">
+                <input type="text" id="userInput" placeholder="Например: закат на море, осенний лес...">
+                <button id="generateBtn">Сгенерировать</button>
+            </div>
+            
+            <div id="palette" class="palette"></div>
+            
+            <p class="hint">Кликни по цвету, чтобы скопировать его код</p>
         </div>
-        
-        <div id="palette" class="palette">
-        </div>
-        
-        <p class="hint">Кликни по цвету, чтобы скопировать его код</p>
     </div>
-    
+
+    <!-- Нижняя секция с галереей как на Getty Images -->
+    <div class="gallery">
+        <h2>Вдохновение</h2>
+        <p>Популярные палитры</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400" alt="Закат">
+                <div class="overlay">Закат</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400" alt="Лес">
+                <div class="overlay">Лес</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400" alt="Океан">
+                <div class="overlay">Океан</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400" alt="Горы">
+                <div class="overlay">Горы</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400" alt="Пустыня">
+                <div class="overlay">Пустыня</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=400" alt="Космос">
+                <div class="overlay">Космос</div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
