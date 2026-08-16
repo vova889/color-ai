@@ -266,8 +266,8 @@ button:active {
 /* Фичи-карточки */
 .features-row {
     width: 100%;
-    background: #0f0f1a;
-    padding: 60px 20px;
+    background: linear-gradient(180deg, #ff8c42 0%, #e94560 15%, #533483 40%, #0f3460 70%, #0f0f1a 100%);
+    padding: 80px 20px 60px 20px;
     display: flex;
     justify-content: center;
     gap: 25px;
