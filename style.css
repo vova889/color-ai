@@ -49,6 +49,7 @@ input {
     border-radius: 10px;
     font-size: 1rem;
     outline: none;
+    transition: border-color 0.3s;
 }
 
 input:focus {
@@ -63,10 +64,17 @@ button {
     border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    white-space: nowrap;
 }
 
 button:hover {
     background: #5a67d8;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 .palette {
@@ -86,10 +94,13 @@ button:hover {
     align-items: flex-end;
     justify-content: center;
     padding: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.5s ease;
 }
 
 .color-box:hover {
     transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .color-code {
@@ -107,6 +118,17 @@ button:hover {
     font-size: 0.9rem;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .toast {
     position: fixed;
     bottom: 20px;
@@ -116,4 +138,13 @@ button:hover {
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
+    opacity: 0;
+    animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        bottom: 40px;
+    }
 }
