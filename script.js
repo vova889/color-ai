@@ -8,8 +8,8 @@ const moodPalettes = {
     "горы": ["#2C3E50", "#34495E", "#5D6D7E", "#85929E", "#AEB6BF"],
     "снег": ["#E5E7E9", "#CCD1D1", "#99A3A4", "#7F8C8D", "#BDC3C7"],
     "вулкан": ["#E74C3C", "#C0392B", "#922B21", "#F39C12", "#D35400"],
-    "осень": ["#6E2C00", "#AF601A", "#D35400", "#E67E22", "#F5B041"],
     "солнце": ["#FFD700", "#FFA500", "#FF8C00", "#FFDAB9", "#FFE4B5"],
+    "осень": ["#6E2C00", "#AF601A", "#D35400", "#E67E22", "#F5B041"],
     "весна": ["#A9DFBF", "#7DCEA0", "#52BE80", "#2ECC71", "#D5F5E3"],
     "зима": ["#E5E7E9", "#CCD1D1", "#99A3A4", "#7F8C8D", "#BDC3C7"],
     "лето": ["#F1C40F", "#F7DC6F", "#FAD7A0", "#FDEBD0", "#E67E22"],
@@ -47,7 +47,7 @@ function generatePalette() {
     const userInput = document.getElementById('userInput').value.trim().toLowerCase();
     const paletteDiv = document.getElementById('palette');
     
-    paletteDiv.innerHTML = '<p style="color: #999; width: 100%;">✨ Подбираю палитру...</p>';
+    paletteDiv.innerHTML = '<p style="color: rgba(255,255,255,0.7); width: 100%;">✨ Подбираю палитру...</p>';
     
     setTimeout(() => {
         let colors = null;
@@ -146,6 +146,11 @@ function showToast(message) {
     setTimeout(() => {
         toast.remove();
     }, 2000);
+}
+
+function setTag(tag) {
+    document.getElementById('userInput').value = tag;
+    generatePalette();
 }
 
 document.getElementById('generateBtn').addEventListener('click', generatePalette);
