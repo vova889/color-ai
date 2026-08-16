@@ -15,11 +15,11 @@ body {
     position: relative;
 }
 
-/* Верхний фон с картиной */
+/* Верхний фон с красивым градиентом (закат) */
 .hero {
     width: 100%;
     min-height: 60vh;
-    background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600') center/cover no-repeat;
+    background: linear-gradient(180deg, #2c1a4d 0%, #6b3fa0 15%, #c75b7a 35%, #ff8c42 55%, #ffc861 70%, #a8c0ff 85%, #3f2b96 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,14 +27,30 @@ body {
     position: relative;
 }
 
+/* Добавляем солнце в правом верхнем углу */
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+    top: 40px;
+    right: 60px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff9c4 20%, #ffe082 50%, #ffb300 70%, transparent 100%);
+    box-shadow: 0 0 60px 30px rgba(255, 200, 50, 0.6);
+}
+
+/* Добавляем облака */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 100px;
+    left: 80px;
+    width: 180px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    filter: blur(15px);
 }
 
 .container {
@@ -144,7 +160,7 @@ button:active {
     font-size: 0.9rem;
 }
 
-/* Нижняя секция как на Getty Images */
+/* Нижняя секция - галерея с CSS-градиентами */
 .gallery {
     width: 100%;
     background: #f5f5f5;
@@ -186,11 +202,29 @@ button:active {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* Фоны для каждой карточки галереи */
+.gallery-item:nth-child(1) {
+    background: linear-gradient(180deg, #ff6b6b, #ffa07a, #ffd89b);
+}
+
+.gallery-item:nth-child(2) {
+    background: linear-gradient(180deg, #1E5128, #4E9F3D, #7DCEA0);
+}
+
+.gallery-item:nth-child(3) {
+    background: linear-gradient(180deg, #154360, #1A5276, #2980B9);
+}
+
+.gallery-item:nth-child(4) {
+    background: linear-gradient(180deg, #2C3E50, #34495E, #5D6D7E);
+}
+
+.gallery-item:nth-child(5) {
+    background: linear-gradient(180deg, #D4AC0D, #B7950B, #9A7D0A);
+}
+
+.gallery-item:nth-child(6) {
+    background: linear-gradient(180deg, #0F0C29, #302B63, #24243E);
 }
 
 .gallery-item .overlay {
