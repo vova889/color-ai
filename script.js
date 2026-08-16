@@ -153,6 +153,14 @@ function setTag(tag) {
     generatePalette();
 }
 
+function randomPalette() {
+    const moods = Object.keys(moodPalettes);
+    const randomMood = moods[Math.floor(Math.random() * moods.length)];
+    document.getElementById('userInput').value = randomMood;
+    generatePalette();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 document.getElementById('generateBtn').addEventListener('click', generatePalette);
 
 document.getElementById('userInput').addEventListener('keypress', function(e) {
