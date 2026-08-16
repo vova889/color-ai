@@ -147,12 +147,12 @@ function showToast(message) {
     }, 2000);
 }
 
-window.onload = function() {
-    generatePalette();
-    
-    document.getElementById('userInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            generatePalette();
-        }
-    });
-};
+document.getElementById('generateBtn').addEventListener('click', generatePalette);
+
+document.getElementById('userInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        generatePalette();
+    }
+});
+
+generatePalette();
