@@ -82,14 +82,32 @@ h1 {
 
 .subtitle {
     color: rgba(255,255,255,0.7);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: 1.1rem;
+}
+
+/* Статистика */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stats span {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 .input-group {
     display: flex;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 input {
@@ -136,6 +154,32 @@ button:active {
     transform: translateY(0);
 }
 
+/* Популярные запросы */
+.popular-tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    color: #667eea;
+    background: rgba(102,126,234,0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid rgba(102,126,234,0.3);
+}
+
+.tag:hover {
+    background: rgba(102,126,234,0.3);
+    color: white;
+    transform: translateY(-2px);
+}
+
 .palette {
     display: flex;
     gap: 12px;
@@ -180,6 +224,42 @@ button:active {
     font-size: 0.85rem;
 }
 
+/* Мини-фичи */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s;
+}
+
+.feature:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+}
+
+.feature-text {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* Нижняя секция */
 .gallery {
     width: 100%;
     background: linear-gradient(180deg, #ff8c42 0%, #e94560 20%, #533483 50%, #0f3460 100%);
@@ -223,7 +303,6 @@ button:active {
     border-color: rgba(255,255,255,0.3);
 }
 
-/* Фоны для галереи */
 .gallery-item:nth-child(1) {
     background: linear-gradient(135deg, #ff6b6b, #ffa07a, #ffd89b);
 }
