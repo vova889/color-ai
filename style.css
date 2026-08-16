@@ -269,11 +269,11 @@ button:active {
 .bottom-section {
     width: 100%;
     background: linear-gradient(180deg, #ff8c42 0%, #e94560 15%, #533483 40%, #0f3460 70%, #0f0f1a 100%);
-    padding: 60px 20px;
+    padding: 80px 40px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px;
+    gap: 50px;
     flex-wrap: wrap;
 }
 
@@ -281,53 +281,53 @@ button:active {
 .features-side {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .feature-card {
-    padding: 25px;
-    width: 200px;
+    padding: 30px;
+    width: 220px;
     text-align: center;
 }
 
 .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 12px;
 }
 
 .feature-card h4 {
     color: white;
-    margin-bottom: 8px;
-    font-size: 1rem;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
 }
 
 .feature-card p {
     color: rgba(255,255,255,0.6);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 /* Галерея */
 .gallery {
-    max-width: 600px;
+    max-width: 700px;
     text-align: center;
 }
 
 .gallery h2 {
     color: white;
-    font-size: 2rem;
-    margin-bottom: 5px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .gallery p {
     color: rgba(255,255,255,0.6);
-    font-size: 0.95rem;
-    margin-bottom: 30px;
+    font-size: 1rem;
+    margin-bottom: 40px;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .gallery-item {
@@ -375,11 +375,11 @@ button:active {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 15px;
+    padding: 20px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
     color: white;
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     text-align: left;
 }
 
@@ -387,13 +387,13 @@ button:active {
 .info-side {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 250px;
+    gap: 20px;
+    max-width: 280px;
 }
 
 .gallery-slogan {
     color: rgba(255,255,255,0.8);
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-style: italic;
 }
 
@@ -402,8 +402,8 @@ button:active {
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 14px 20px;
-    font-size: 0.95rem;
+    padding: 16px 24px;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: bold;
@@ -417,13 +417,13 @@ button:active {
 .designer-tip {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 15px;
-    font-size: 0.8rem;
+    gap: 10px;
+    padding: 18px;
+    font-size: 0.85rem;
 }
 
 .tip-icon {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .tip-text {
@@ -432,7 +432,7 @@ button:active {
 
 .gallery-update {
     color: rgba(255,255,255,0.5);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 @keyframes fadeIn {
