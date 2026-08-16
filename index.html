@@ -14,14 +14,46 @@
             <h1>🎨 Нейро-Генератор Палитр</h1>
             <p class="subtitle">Опиши настроение — получи цветовую палитру</p>
             
+            <!-- Статистика -->
+            <div class="stats">
+                <span>🎨 50+ палитр</span>
+                <span>⚡ Мгновенно</span>
+                <span>🆓 Бесплатно</span>
+            </div>
+            
             <div class="input-group">
                 <input type="text" id="userInput" placeholder="Например: закат на море, осенний лес...">
                 <button id="generateBtn">Сгенерировать</button>
             </div>
             
+            <!-- Популярные запросы -->
+            <div class="popular-tags">
+                <span class="tag" onclick="setTag('закат')">#закат</span>
+                <span class="tag" onclick="setTag('океан')">#океан</span>
+                <span class="tag" onclick="setTag('лес')">#лес</span>
+                <span class="tag" onclick="setTag('киберпанк')">#киберпанк</span>
+                <span class="tag" onclick="setTag('осень')">#осень</span>
+            </div>
+            
             <div id="palette" class="palette"></div>
             
             <p class="hint">Кликни по цвету, чтобы скопировать его код</p>
+            
+            <!-- Мини-фичи -->
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <span class="feature-text">Мгновенная генерация</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📋</span>
+                    <span class="feature-text">Копирование в один клик</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🧠</span>
+                    <span class="feature-text">Умный подбор</span>
+                </div>
+            </div>
         </div>
     </div>
 
