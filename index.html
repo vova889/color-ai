@@ -12,9 +12,13 @@
         <p class="subtitle">Опиши настроение — получи цветовую палитру</p>
         
         <div class="input-group">
-            <input type="text" id="userInput" placeholder="Например: закат на море, осенний лес, космос...">
+            <input type="text" id="userInput" placeholder="Например: закат на море, ночь в лесу...">
             <button onclick="generatePalette()">Сгенерировать</button>
         </div>
+        
+        <button onclick="randomMood()" class="lucky-btn">🎲 Мне повезёт</button>
+        
+        <div id="theme" class="theme"></div>
         
         <div id="palette" class="palette">
         </div>
