@@ -273,43 +273,44 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 50px;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
-/* Фичи слева */
+/* Фичи слева - в 2 столбца */
 .features-side {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .feature-card {
-    padding: 30px;
-    width: 220px;
+    padding: 25px;
+    width: 180px;
     text-align: center;
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 12px;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .feature-card h4 {
     color: white;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-size: 1rem;
 }
 
 .feature-card p {
     color: rgba(255,255,255,0.6);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
-/* Галерея */
+/* Галерея по центру */
 .gallery {
-    max-width: 700px;
+    max-width: 750px;
     text-align: center;
+    flex: 1;
 }
 
 .gallery h2 {
@@ -321,13 +322,13 @@ button:active {
 .gallery p {
     color: rgba(255,255,255,0.6);
     font-size: 1rem;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 18px;
 }
 
 .gallery-item {
@@ -388,12 +389,12 @@ button:active {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 280px;
+    max-width: 300px;
 }
 
 .gallery-slogan {
     color: rgba(255,255,255,0.8);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-style: italic;
 }
 
@@ -402,8 +403,8 @@ button:active {
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 16px 24px;
-    font-size: 1rem;
+    padding: 18px 26px;
+    font-size: 1.05rem;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: bold;
@@ -418,8 +419,8 @@ button:active {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 18px;
-    font-size: 0.85rem;
+    padding: 20px;
+    font-size: 0.9rem;
 }
 
 .tip-icon {
@@ -432,7 +433,7 @@ button:active {
 
 .gallery-update {
     color: rgba(255,255,255,0.5);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 
 @keyframes fadeIn {
