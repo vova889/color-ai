@@ -60,65 +60,69 @@
         
     </div>
     
-    <!-- Нижняя секция с фичами -->
-    <div class="features-row">
-        <div class="feature-card">
-            <span class="feature-icon">⚡</span>
-            <h4>Мгновенно</h4>
-            <p>Палитра генерируется за секунду</p>
-        </div>
-        <div class="feature-card">
-            <span class="feature-icon">📋</span>
-            <h4>Один клик</h4>
-            <p>Копируйте цвет нажатием</p>
-        </div>
-        <div class="feature-card">
-            <span class="feature-icon">🧠</span>
-            <h4>Умный подбор</h4>
-            <p>Анализ вашего описания</p>
-        </div>
-    </div>
-
-    <!-- Галерея вдохновения -->
-    <div class="gallery">
-        <h2>Вдохновение</h2>
-        <p>Популярные палитры</p>
+    <!-- Нижняя секция с фичами и галереей -->
+    <div class="bottom-section">
         
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="overlay">Закат</div>
+        <!-- Фичи слева -->
+        <div class="features-side">
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h4>Мгновенно</h4>
+                <p>Палитра генерируется за секунду</p>
             </div>
-            <div class="gallery-item">
-                <div class="overlay">Лес</div>
+            <div class="feature-card">
+                <span class="feature-icon">📋</span>
+                <h4>Один клик</h4>
+                <p>Копируйте цвет нажатием</p>
             </div>
-            <div class="gallery-item">
-                <div class="overlay">Океан</div>
-            </div>
-            <div class="gallery-item">
-                <div class="overlay">Горы</div>
-            </div>
-            <div class="gallery-item">
-                <div class="overlay">Пустыня</div>
-            </div>
-            <div class="gallery-item">
-                <div class="overlay">Космос</div>
+            <div class="feature-card">
+                <span class="feature-icon">🧠</span>
+                <h4>Умный подбор</h4>
+                <p>Анализ вашего описания</p>
             </div>
         </div>
         
-        <!-- Слоган -->
-        <p class="gallery-slogan">✨ Создавайте, вдохновляйтесь, делитесь палитрами</p>
-        
-        <!-- Кнопка случайной палитры -->
-        <button class="random-btn" onclick="randomPalette()">🎲 Попробовать случайную палитру</button>
-        
-        <!-- Совет дизайнера -->
-        <div class="designer-tip">
-            <span class="tip-icon">💡</span>
-            <span class="tip-text">Совет: тёмные палитры подходят для фона, светлые — для текста</span>
+        <!-- Галерея по центру -->
+        <div class="gallery">
+            <h2>Вдохновение</h2>
+            <p>Популярные палитры</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="overlay">Закат</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="overlay">Лес</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="overlay">Океан</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="overlay">Горы</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="overlay">Пустыня</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="overlay">Космос</div>
+                </div>
+            </div>
         </div>
         
-        <!-- Подпись обновления -->
-        <p class="gallery-update">🔄 Коллекция обновляется каждую неделю</p>
+        <!-- Информация справа -->
+        <div class="info-side">
+            <p class="gallery-slogan">✨ Создавайте, вдохновляйтесь, делитесь</p>
+            
+            <button class="random-btn" onclick="randomPalette()">🎲 Случайная палитра</button>
+            
+            <div class="designer-tip">
+                <span class="tip-icon">💡</span>
+                <span class="tip-text">Тёмные палитры — для фона, светлые — для текста</span>
+            </div>
+            
+            <p class="gallery-update">🔄 Обновляется каждую неделю</p>
+        </div>
+        
     </div>
 
     <script src="script.js"></script>
